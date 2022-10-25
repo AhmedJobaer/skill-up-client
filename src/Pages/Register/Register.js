@@ -1,18 +1,33 @@
 import React from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../context/UserContext';
 
 
-const handelRegister = (event) => {
-    event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const url = event.target.url.value;
-    const password = event.target.password.value;
-    console.log(name, email, url, password);
-}
 
 const Register = () => {
+
+
+    const { createUser } = useContext(AuthContext);
+
+    const handelRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const url = form.url.value;
+        const password = form.password.value;
+        console.log(name, email, url, password);
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+
+    }
+
     return (
         <div>
             <Form onSubmit={handelRegister}>
