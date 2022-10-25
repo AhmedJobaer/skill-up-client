@@ -4,13 +4,9 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../context/UserContext';
 
 
-
-
-
 const Login = () => {
 
-
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -19,6 +15,16 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
         signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handelGoogleSignIn = () => {
+        signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -41,13 +47,11 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
             </Form>
+            <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
         </div>
     );
 };

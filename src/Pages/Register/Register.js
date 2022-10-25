@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/UserContext';
 const Register = () => {
 
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle } = useContext(AuthContext);
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -23,9 +23,19 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
             })
             .catch(error => console.error(error))
 
+    }
+
+    const handelGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -38,7 +48,7 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo Url</Form.Label>
-                    <Form.Control type="url" name="url" placeholder="Enter Phot Url" required />
+                    <Form.Control type="url" name="url" placeholder="Enter Photo Url" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -57,7 +67,9 @@ const Register = () => {
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
+
             </Form>
+            <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
         </div>
     );
 };
