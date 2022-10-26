@@ -40,7 +40,7 @@ const Register = () => {
 
     return (
         <div>
-            <Form onSubmit={handelRegister}>
+            <Form className='w-50 mx-auto' onSubmit={handelRegister}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Full Name</Form.Label>
@@ -67,9 +67,11 @@ const Register = () => {
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
+                <br></br>
+                <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
 
             </Form>
-            <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
+
         </div>
     );
 };

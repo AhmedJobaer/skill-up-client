@@ -15,7 +15,7 @@ const Leftsidenav = () => {
     return (
         <div>
             {
-                sideNav.map(sn => <p key={sn.id}><Link to={`/course-details/${sn.id}`}>{sn.name}</Link></p>)
+                sideNav.map(sn => <p key={sn.id}><Link className='btn btn-info' style={{ textDecoration: 'none', width: '140px' }} to={`/course-details/${sn.id}`}>{sn.name}</Link></p>)
             }
         </div>
     );

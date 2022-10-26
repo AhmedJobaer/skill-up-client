@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Card from './Card/Card';
+import CardContainer from './Card/CardContsiner';
+
 import Leftsidenav from './LeftSide/Leftsidenav';
 
 const CourseContainer = () => {
@@ -8,11 +9,11 @@ const CourseContainer = () => {
         <div>
             <Container>
                 <Row>
-                    <Col>
+                    <Col lg='2' className='sm:d-sm-none'>
                         <Leftsidenav></Leftsidenav>
                     </Col>
-                    <Col>
-                        <Card></Card>
+                    <Col lg='10'>
+                        <CardContainer></CardContainer>
                     </Col>
                 </Row>
             </Container>

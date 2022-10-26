@@ -51,6 +51,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                <br></br>
                 <Link to='/home'><Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button></Link>
             </Form>
 
