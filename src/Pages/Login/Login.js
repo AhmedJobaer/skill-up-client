@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/UserContext';
 
 const Login = () => {
 
-    const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWiGithub } = useContext(AuthContext);
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -26,6 +26,15 @@ const Login = () => {
 
     const handelGoogleSignIn = () => {
         signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handelGithubSignIn = () => {
+        signInWiGithub()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -53,6 +62,8 @@ const Login = () => {
                 </Button>
                 <br></br>
                 <Link to='/home'><Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button></Link>
+                <br />
+                <Link to='/home'><Button onClick={handelGithubSignIn} className='mt-2' variant="success">SignIn with GitHub</Button></Link>
             </Form>
 
         </div>

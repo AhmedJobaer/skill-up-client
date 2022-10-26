@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/UserContext';
 const Register = () => {
 
 
-    const { createUser, signInWithGoogle } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, signInWiGithub } = useContext(AuthContext);
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -36,6 +36,16 @@ const Register = () => {
                 console.log(user);
             })
             .catch(error => console.error(error))
+    }
+
+    const handelGithubSignIn = () => {
+        signInWiGithub()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+
     }
 
     return (
@@ -69,6 +79,8 @@ const Register = () => {
                 </Button>
                 <br></br>
                 <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
+                <br />
+                <Button onClick={handelGithubSignIn} className='mt-2' variant="success">SignIn with Google</Button>
 
             </Form>
 
