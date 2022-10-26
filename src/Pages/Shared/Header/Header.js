@@ -22,6 +22,8 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
+
+
     return (
         <div>
             <Navbar collapseOnSelect className='mb-4' expand="lg" bg="dark" variant="dark">
@@ -31,7 +33,7 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link ><Link to='/home'>Home</Link></Nav.Link>
-                            <Nav.Link href="#pricing">Course</Nav.Link>
+                            <Nav.Link><Link to='/course-container'>Course</Link></Nav.Link>
                             <Nav.Link href="#pricing">Blog</Nav.Link>
 
                         </Nav>
@@ -41,6 +43,7 @@ const Header = () => {
                                 <Link to='/register'>Register</Link>
                             </Nav.Link>
                             <p className='text-success'>{user?.displayName && user.displayName}</p>
+                            {/* <img src={user.photoUrl} alt="" /> */}
                             {
                                 user?.email ?
                                     <Button onClick={handelSignOut} className='w-25' variant="primary">SignOut</Button>
