@@ -10,7 +10,7 @@ import { AuthContext } from '../../context/UserContext';
 const Register = () => {
 
 
-    const { createUser, signInWithGoogle, signInWiGithub } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, signInWiGithub, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState();
     const navigate = useNavigate();
 
@@ -32,6 +32,7 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 setError("");
+                handelUpdateUserProfile(name, url);
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -68,6 +69,16 @@ const Register = () => {
 
     }
 
+    const handelUpdateUserProfile = (name, url) => {
+        const profile = {
+            displayName: name,
+            photoURL: url
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(() => { })
+    }
+
     return (
         <div>
             <Form className='w-50 mx-auto' onSubmit={handelRegister}>
@@ -78,7 +89,7 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo Url</Form.Label>
-                    <Form.Control type="url" name="url" placeholder="Enter Photo Url" required />
+                    <Form.Control type="text" name="url" placeholder="Enter Photo Url" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">

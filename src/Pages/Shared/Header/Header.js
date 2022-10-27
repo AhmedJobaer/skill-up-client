@@ -49,7 +49,7 @@ const Header = () => {
                             {/* <div className='d-flex align-items-center'><p className='text-success'>{user?.displayName && user.displayName}</p></div> */}
                             {/* <img src={user.photoUrl} alt="" /> */}
                             {
-                                user?.photoURL ?
+                                user?.uid ?
                                     <div>
                                         <Image data-toggle="tooltip" data-placement="top" title={user.displayName} src={user.photoURL} className="m-2" roundedCircle style={{ height: '30px' }}>
 
