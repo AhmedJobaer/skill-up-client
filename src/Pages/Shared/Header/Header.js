@@ -38,7 +38,8 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link ><Link style={{ textDecoration: 'none' }} to='/'>Home</Link></Nav.Link>
                             <Nav.Link><Link style={{ textDecoration: 'none' }} to='/course-container'>Course</Link></Nav.Link>
-                            <Nav.Link><Link style={{ textDecoration: 'none' }} to='/blog'>FAQ</Link></Nav.Link>
+                            <Nav.Link><Link style={{ textDecoration: 'none' }} to='/blog'>Blog</Link></Nav.Link>
+                            <Nav.Link><Link style={{ textDecoration: 'none' }} to='/faq'>FAQ</Link></Nav.Link>
 
                         </Nav>
                         <Nav className='d-flex align-items-center'>
