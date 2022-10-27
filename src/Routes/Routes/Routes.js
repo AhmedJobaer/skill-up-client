@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import EPage from "../../Pages/404Pege/EPage";
 import Blog from "../../Pages/Blog/Blog";
 import Checkout from "../../Pages/Checkout/Checkout";
 import CourseContainer from "../../Pages/Container/CourseContainer";
@@ -40,9 +41,15 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/course-details/${params.id}`)
             },
             {
-                path: '/checkout',
-                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+                path: '/checkout/:id',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/course-details/${params.id}`)
             }
         ]
+    },
+    {
+        path: '*',
+        element: <EPage></EPage>
     }
+
 ])

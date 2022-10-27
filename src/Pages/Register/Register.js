@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 
@@ -11,6 +11,12 @@ const Register = () => {
 
 
     const { createUser, signInWithGoogle, signInWiGithub } = useContext(AuthContext);
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -25,8 +31,13 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError("");
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
 
     }
 
@@ -34,18 +45,26 @@ const Register = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
     }
 
     const handelGithubSignIn = () => {
         signInWiGithub()
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
 
     }
 
@@ -78,6 +97,7 @@ const Register = () => {
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
+                <p>{error}</p>
                 <p>Already have an account? please <Link to='/login'>Login</Link></p>
                 <Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button>
                 <br />

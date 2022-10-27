@@ -1,9 +1,12 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
+    const course = useLoaderData();
+    console.log(course);
     return (
-        <div>
-            <h2>Checkout</h2>
+        <div className='w-50 mx-auto'>
+            <h2>Checkout by {course.instructor.instructorName}</h2>
         </div>
     );
 };

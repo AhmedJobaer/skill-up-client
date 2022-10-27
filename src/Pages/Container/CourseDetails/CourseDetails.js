@@ -32,7 +32,7 @@ const CourseDetails = () => {
             </div>
             <div className='w-50 mx-auto my-4'>
 
-                <Button className='' variant="success"> <Link to='/checkout'>Get Premium Access</Link></Button>
+                <Button className='' variant="success"> <Link className='text-white' style={{ textDecoration: 'none' }} to={`/checkout/${course.id}`}>Get Premium Access</Link></Button>
 
             </div>
         </div>

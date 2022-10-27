@@ -81,9 +81,9 @@ const Login = () => {
                 </Button>
                 <p>Don't have an account? <Link to='/register'>Register</Link></p>
                 <p>{error}</p>
-                <Link to='/'><Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button></Link>
+                <Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button>
                 <br />
-                <Link to='/'><Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with GitHub</Button></Link>
+                <Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with GitHub</Button>
             </Form>
 
         </div>
