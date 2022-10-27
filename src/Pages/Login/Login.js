@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
 
     const { signIn, signInWithGoogle, signInWiGithub } = useContext(AuthContext);
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -20,26 +26,39 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError("");
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
     }
 
     const handelGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
     }
 
     const handelGithubSignIn = () => {
         signInWiGithub()
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 console.log(user);
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message);
+                console.error(error)
+            })
     }
 
     return (
@@ -61,9 +80,10 @@ const Login = () => {
                     Login
                 </Button>
                 <p>Don't have an account? <Link to='/register'>Register</Link></p>
-                <Link to='/home'><Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button></Link>
+                <p>{error}</p>
+                <Link to='/'><Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button></Link>
                 <br />
-                <Link to='/home'><Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with GitHub</Button></Link>
+                <Link to='/'><Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with GitHub</Button></Link>
             </Form>
 
         </div>

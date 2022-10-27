@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 
 
@@ -14,8 +14,6 @@ const CourseDetails = () => {
             <div className='w-50 mx-auto my-4'>
 
                 <Button className='' variant="success">Download Details as PDF</Button>
-                <Button variant="success">Get Premium Access</Button>
-
 
             </div>
             <div className='w-75  mx-auto d-flex'>
@@ -31,6 +29,11 @@ const CourseDetails = () => {
                     <p>Instructor Name: {course.instructor.instructorName}</p>
                     <p>Price: ${course.price}</p>
                 </div>
+            </div>
+            <div className='w-50 mx-auto my-4'>
+
+                <Button className='' variant="success"> <Link to='/checkout'>Get Premium Access</Link></Button>
+
             </div>
         </div>
     );
