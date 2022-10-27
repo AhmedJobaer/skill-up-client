@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 
@@ -77,10 +78,10 @@ const Register = () => {
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
-                <br></br>
-                <Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button>
+                <p>Already have an account? please <Link to='/login'>Login</Link></p>
+                <Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button>
                 <br />
-                <Button onClick={handelGithubSignIn} className='mt-2' variant="success">SignIn with Google</Button>
+                <Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with Github</Button>
 
             </Form>
 

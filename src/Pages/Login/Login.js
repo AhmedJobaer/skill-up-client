@@ -60,10 +60,10 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
-                <br></br>
-                <Link to='/home'><Button onClick={handelGoogleSignIn} className='mt-2' variant="success">SignIn with Google</Button></Link>
+                <p>Don't have an account? <Link to='/register'>Register</Link></p>
+                <Link to='/home'><Button onClick={handelGoogleSignIn} className='' variant="primary">SignIn with Google</Button></Link>
                 <br />
-                <Link to='/home'><Button onClick={handelGithubSignIn} className='mt-2' variant="success">SignIn with GitHub</Button></Link>
+                <Link to='/home'><Button onClick={handelGithubSignIn} className='mt-2' variant="primary">SignIn with GitHub</Button></Link>
             </Form>
 
         </div>
