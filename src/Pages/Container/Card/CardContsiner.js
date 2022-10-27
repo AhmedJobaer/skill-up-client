@@ -7,7 +7,7 @@ const CardContainer = () => {
     const [courses, setCourses] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-lists')
+        fetch('https://skill-up-server-weld.vercel.app/all-lists')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])

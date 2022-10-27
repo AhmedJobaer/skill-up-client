@@ -12,7 +12,7 @@ const CourseContainer = () => {
                     <Col lg='2' className='sm:d-sm-none'>
                         <Leftsidenav></Leftsidenav>
                     </Col>
-                    <Col lg='10'>
+                    <Col lg='10' className=''>
                         <CardContainer></CardContainer>
                     </Col>
                 </Row>
